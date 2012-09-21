@@ -15,7 +15,7 @@ use EPublisher::Source::Base;
 
 our @ISA = qw( EPublisher::Source::Base );
 
-our $VERSION = 0.2;
+our $VERSION = 0.1;
 
 # implementing the interface to EPublisher::Source::Base
 sub load_source{
@@ -48,7 +48,7 @@ sub load_source{
 
     # perltuts.com always provides utf-8 encoded data, so we have
     # to decode it otherwise the target plugins may produce garbage
-    eval{ $pod = decode( 'utf-8', $pod ); };
+    $pod = decode( 'utf-8', $pod );
 
     my $title    = $name;
     my $info = { pod => $pod, filename => $name, title => $title };
@@ -85,7 +85,7 @@ EPublisher::Source::Plugin::PerltutsCom - Get POD from tutorials published on pe
 
 =head1 VERSION
 
-version 0.2
+version 0.1
 
 =head1 SYNOPSIS
 
